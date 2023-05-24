@@ -1,0 +1,15 @@
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\bin\Debug\net6.0\NAAProject.Services.deps.json
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\bin\Debug\net6.0\NAAProject.Services.dll
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\bin\Debug\net6.0\NAAProject.Services.pdb
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\bin\Debug\net6.0\NAAProject.Data.dll
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\bin\Debug\net6.0\NAAProject.Data.pdb
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\obj\Debug\net6.0\NAAProject.Services.csproj.AssemblyReference.cache
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\obj\Debug\net6.0\NAAProject.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\obj\Debug\net6.0\NAAProject.Services.AssemblyInfoInputs.cache
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\obj\Debug\net6.0\NAAProject.Services.AssemblyInfo.cs
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\obj\Debug\net6.0\NAAProject.Services.csproj.CoreCompileInputs.cache
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\obj\Debug\net6.0\NAAProject.Services.csproj.CopyComplete
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\obj\Debug\net6.0\NAAProject.Services.dll
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\obj\Debug\net6.0\refint\NAAProject.Services.dll
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\obj\Debug\net6.0\NAAProject.Services.pdb
+C:\Users\nicol\source\repos\New folder\NAAProject\NAAProject.Services\obj\Debug\net6.0\ref\NAAProject.Services.dll
