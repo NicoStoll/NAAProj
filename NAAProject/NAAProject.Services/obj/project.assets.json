@@ -1,0 +1,91 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "NAAProject.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/NAAProject.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NAAProject.Data.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NAAProject.Data/1.0.0": {
+      "type": "project",
+      "path": "../NAAProject.Data/NAAProject.Data.csproj",
+      "msbuildProject": "../NAAProject.Data/NAAProject.Data.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "NAAProject.Data >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\nicol\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\nicol\\source\\repos\\New folder\\NAAProject\\NAAProject.Services\\NAAProject.Services.csproj",
+      "projectName": "NAAProject.Services",
+      "projectPath": "C:\\Users\\nicol\\source\\repos\\New folder\\NAAProject\\NAAProject.Services\\NAAProject.Services.csproj",
+      "packagesPath": "C:\\Users\\nicol\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nicol\\source\\repos\\New folder\\NAAProject\\NAAProject.Services\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\nicol\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "C:\\Users\\nicol\\source\\repos\\New folder\\NAAProject\\NAAProject.Data\\NAAProject.Data.csproj": {
+              "projectPath": "C:\\Users\\nicol\\source\\repos\\New folder\\NAAProject\\NAAProject.Data\\NAAProject.Data.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
