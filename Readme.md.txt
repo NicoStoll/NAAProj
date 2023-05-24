@@ -1,0 +1,1 @@
+run "dotnet restore" in the project folder to resore the dependencies
