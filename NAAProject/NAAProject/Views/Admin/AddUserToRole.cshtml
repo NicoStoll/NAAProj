@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "AddUserToRole";
+}
+
+<h1>Manage User Roles</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <p>
+        User Username: @Html.DropDownList("UserName",
+            (IEnumerable<SelectListItem>)ViewData["Users"])
+        Role : @Html.DropDownList("RoleName",
+            (IEnumerable<SelectListItem>)ViewData["Roles"])
+    </p><input type="submit" value="Save"/>
+
+}
+
+@Html.ActionLink("Check User Role", "GetRolesForUsers")
+

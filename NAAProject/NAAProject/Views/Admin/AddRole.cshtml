@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "AddRole";
+}
+
+<h1>Add Role</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div>Role Name.</div>
+    <p>@Html.TextBox("RoleName")</p>
+    <input type="submit" value="Save"/>
+}
+
+@Html.ActionLink("List of Roles", "GetRoles") |
+@Html.ActionLink("Manage User Roles", "ManageUserRoles")
+

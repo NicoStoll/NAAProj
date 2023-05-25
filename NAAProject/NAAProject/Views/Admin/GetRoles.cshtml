@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "GetRoles";
+}
+
+<h1>List of Roles</h1>
+
+@foreach (var role in Model)
+{
+    <p>
+        @role.Name |
+        @Html.ActionLink("Edit", "EditRole", new { id = role.Id}) |
+        @Html.ActionLink("Delete", "DeleteRole", new { id = role.Id})
+    </p>
+}
+
+@Html.ActionLink("Add Role", "AddRole")
+<br />
+@Html.ActionLink("Add User To Role", "AddUserToRole", "Admin")
+
