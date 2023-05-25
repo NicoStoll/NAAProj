@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using NAAProject.Data.Models.Domain;
 using NAAProject.Data.Models.IDAO;
 using NAAProject.Data.Models.Repository;
@@ -11,7 +12,15 @@ namespace NAAProject.Data.Models.DAO
 {
     public class UserDAO : IUserDAO
     {
-        public User GetUser(Application application, NAAContext context) {
+
+		public User GetUser(NAAContext context, string id)
+		{
+			context.Users.Include(user => user.Applications).ToList();
+			return context.Users.Find(id);
+		}
+		public User GetUser(Application application, NAAContext context) {
+
+          
 
             Application m = context.Applications.Find(application.ApplicationId);
 
