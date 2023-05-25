@@ -130,7 +130,7 @@ namespace NAAProject.Data.Migrations
             modelBuilder.Entity("NAAProject.Data.Models.Domain.University", b =>
                 {
                     b.HasOne("NAAProject.Data.Models.Domain.User", null)
-                        .WithMany("Users")
+                        .WithMany("Universities")
                         .HasForeignKey("UserId");
                 });
 
@@ -143,7 +143,7 @@ namespace NAAProject.Data.Migrations
                 {
                     b.Navigation("Applications");
 
-                    b.Navigation("Users");
+                    b.Navigation("Universities");
                 });
 #pragma warning restore 612, 618
         }
