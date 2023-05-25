@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.IdentityModel.Tokens;
 using NAAProject.Data.Models.DAO;
 using NAAProject.Data.Models.Domain;
 using NAAProject.Data.Models.IDAO;
@@ -42,7 +43,7 @@ namespace NAAProject.Services.Service
             {
                 using (NAAContext context = new NAAContext())
                 {
-            if (userDAO.GetUser(application, context).Applications.ToList().Count() >= 5) return false;             
+                 //       if (userDAO.GetUser(context, userId).Applications.ToList().Count() >= 5) return false;        
                     applicationDAO.AddApplication(context, application);
                     userDAO.AddToCollection(application, userId, context);
                     context.SaveChanges();
