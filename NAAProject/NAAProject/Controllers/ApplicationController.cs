@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using System.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using NAAProject.Data.Models.Domain;
 using NAAProject.Services.IService;
@@ -19,17 +21,21 @@ namespace NAAProject.Controllers
         {
             return View();
         }
+
+        [Authorize(Roles = "User")]
         public ActionResult GetApplications()
         {
             return View(applicationService.GetApplications());
         }
         // GET: ApplicationController/Details/5
+        [Authorize(Roles = "User")]
         public ActionResult Details(int id)
         {
             return View(applicationService.GetApplication(id));
         }
 
         // GET: ApplicationController/Create
+        [Authorize(Roles = "User")]
         public ActionResult Create()
         {
             return View();
@@ -37,12 +43,15 @@ namespace NAAProject.Controllers
 
         // POST: ApplicationController/Create
         [HttpPost]
+        [Authorize(Roles = "User")]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Application application)
         {
             try
             {
-                applicationService.AddApplication(application, "mo");
+                string userId = HttpContext.Session.GetString("userId");
+
+                applicationService.AddApplication(application, userId);
                 return RedirectToAction("GetApplications", "Application",
                     new {id = application.ApplicationId});
             }
@@ -53,6 +62,7 @@ namespace NAAProject.Controllers
         }
 
         // GET: ApplicationController/Edit/5
+        [Authorize(Roles = "User")]
         public ActionResult Edit(int id)
         {
             return View();
@@ -60,6 +70,7 @@ namespace NAAProject.Controllers
 
         // POST: ApplicationController/Edit/5
         [HttpPost]
+        [Authorize(Roles = "User")]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
@@ -74,6 +85,7 @@ namespace NAAProject.Controllers
         }
 
         // GET: ApplicationController/Delete/5
+        [Authorize(Roles = "User")]
         public ActionResult Delete(int id)
         {
             Application application = applicationService.GetApplication(id);
@@ -82,6 +94,7 @@ namespace NAAProject.Controllers
 
         // POST: ApplicationController/Delete/5
         [HttpPost]
+        [Authorize(Roles = "User")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
