@@ -27,7 +27,7 @@ namespace NAAProject.Services.Service
             }
         }
 
-        public IList<University> GetuUniversities()
+        public IList<University> GetUniversities()
         {
             using (NAAContext context = new NAAContext())
             {

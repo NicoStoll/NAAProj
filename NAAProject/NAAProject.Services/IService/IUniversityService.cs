@@ -9,7 +9,7 @@ namespace NAAProject.Services.IService
 {
     public interface IUniversityService
     {
-        IList<University> GetuUniversities();
+        IList<University> GetUniversities();
         University GetUniversity(int id);
     }
 }
