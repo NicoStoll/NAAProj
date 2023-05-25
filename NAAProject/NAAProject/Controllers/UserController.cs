@@ -2,11 +2,22 @@
 using System.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NAAProject.Services.Service;
+using NAAProject.Services.IService;
+using NAAProject.Data.Models.Domain;
 
 namespace NAAProject.Controllers
 {
     public class UserController : Controller
     {
+
+        IUserService userService;
+
+        public UserController()
+        {
+            userService = new UserService();
+        }
+
         // GET: UserController
         public ActionResult Index()
         {
@@ -17,6 +28,12 @@ namespace NAAProject.Controllers
         [Authorize(Roles = "User")]
         public ActionResult Details(int id)
         {
+            string userId = HttpContext.Session.GetString("userId");
+
+            if (userId != null)
+            {
+                return View(userService.GetUser(userId));
+            }
             return View();
         }
 
@@ -45,20 +62,21 @@ namespace NAAProject.Controllers
 
         // GET: UserController/Edit/5
         [Authorize(Roles = "User")]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            return View(userService.GetUser(id));
         }
 
         // POST: UserController/Edit/5
         [HttpPost]
         [Authorize(Roles = "User")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(User user, IFormCollection collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                userService.UpdateUser(user);
+                return RedirectToAction("Details", "User", new {id = user.UserId});
             }
             catch
             {

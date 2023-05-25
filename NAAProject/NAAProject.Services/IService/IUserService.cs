@@ -12,6 +12,10 @@ namespace NAAProject.Services.IService
         IList<User> GetUsers();
         User GetUser(Application application);
 
+        User GetUser(string userId);
+
         void AddUser(User user);
+
+        void UpdateUser(User user);
     }
 }

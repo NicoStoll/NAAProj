@@ -18,5 +18,6 @@ namespace NAAProject.Data.Models.IDAO
 
         public void RemoveFromCollection(Application application, User user, NAAContext context);
         public void AddToCollection(Application application, string userId, NAAContext context);
+        public void UpdateUser(NAAContext context, User user);
     }
 }
