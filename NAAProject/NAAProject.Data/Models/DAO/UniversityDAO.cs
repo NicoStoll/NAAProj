@@ -3,12 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NAAProject.Data.Models.Domain;
 using NAAProject.Data.Models.IDAO;
+using NAAProject.Data.Models.Repository;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace NAAProject.Data.Models.DAO
 {
-    internal class UniversityDAO : IUniversityDAO
+    public class UniversityDAO : IUniversityDAO
     {
+        public IList<University> GetUniversities(NAAContext context)
+        {
+            return context.Universities.ToList();
+        }
+        public University GetUniversity(NAAContext context, int id)
+        {
+            context.Universities.ToList();
+            return context.Universities.Find(id);
+        }
+        public void AddUniversity(NAAContext context, University university)
+        {
+            context.Universities.Add(university);
+            context.SaveChanges();
+        }
 
+        public void DeleteUniversity(NAAContext context, University university)
+        {
+            context.Universities.Remove(university);
+            context.SaveChanges();
+        }
+        public void UpdateUniversity(NAAContext context, University university)
+        {
+            University a = context.Universities.Find(university.UniversityId);
+            context.Entry(a).CurrentValues.SetValues(university);
+            context.SaveChanges();
+        }
     }
 }
