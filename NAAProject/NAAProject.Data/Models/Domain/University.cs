@@ -9,7 +9,7 @@ namespace NAAProject.Data.Models.Domain
         [Key]
         public int UniversityId { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<Application> Applications { get; set; }
+        public virtual ICollection<Application> Applications { get; set; } = new List<Application>();
 
     }
 }
