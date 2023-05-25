@@ -115,6 +115,10 @@ namespace NAAProject.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+
+                    IdentityUser user = await _signInManager.UserManager.FindByEmailAsync(Input.Email);
+                    HttpContext.Session.SetString("userId", user.Id);
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
