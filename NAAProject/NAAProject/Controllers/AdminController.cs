@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using NAAProject.Data;
+using NAAProject.Data.Models.Domain;
 
 namespace NAAProject.Controllers
 {
@@ -71,7 +72,7 @@ namespace NAAProject.Controllers
         public async Task<ActionResult> AddUserToRole(string username, string rolename)
         {
             IdentityUser user = _signInManager.UserManager.FindByEmailAsync(username).Result;
-            await _signInManager.UserManager.AddToRoleAsync(user, rolename); ;
+            await _signInManager.UserManager.AddToRoleAsync(user, rolename);
             FillInDropDowns();
             return RedirectToAction("AddUserToRole");
         }
