@@ -9,5 +9,7 @@ namespace NAAProject.Data
             : base(options)
         {
         }
+
+        
     }
 }
