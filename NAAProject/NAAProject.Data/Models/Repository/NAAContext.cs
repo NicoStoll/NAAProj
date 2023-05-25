@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using NAAProject.Data.Models.Domain;
+using Service.Services.Models;
 
 namespace NAAProject.Data.Models.Repository
 {
@@ -12,6 +13,7 @@ namespace NAAProject.Data.Models.Repository
         public DbSet<User>  Users { get; set; }
         public DbSet<University> Universities { get; set;}
         public DbSet<Application> Applications { get; set; }
+        public DbSet<Course> Courses { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\NAAProject.Data\NAAProject.Data.csproj" />
     <ProjectReference Include="..\NAAProject.Services\NAAProject.Services.csproj" />
+    <ProjectReference Include="..\Service.Services\Service.Services.csproj" />
   </ItemGroup>
 
 </Project>
