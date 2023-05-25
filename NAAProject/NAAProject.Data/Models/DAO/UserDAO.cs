@@ -49,5 +49,10 @@ namespace NAAProject.Data.Models.DAO
         {
             context.Users.Find(userId).Applications.Add(application);
         }
+
+        public void AddUser(NAAContext context, User user)
+        {
+            context.Users.Add(user);
+        }
     }
 }

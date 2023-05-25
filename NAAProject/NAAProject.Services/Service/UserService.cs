@@ -19,6 +19,16 @@ namespace NAAProject.Services.Service
         {
             userDAO = new UserDAO();
         }
+
+        public void AddUser(User user)
+        {
+            using (NAAContext context = new NAAContext())
+            {
+                userDAO.AddUser(context, user);
+                context.SaveChanges();
+            }
+        }
+
         public User GetUser(Application application)
         {
             using (NAAContext context = new NAAContext())

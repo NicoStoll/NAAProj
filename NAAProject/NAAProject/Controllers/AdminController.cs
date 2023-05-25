@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using NAAProject.Data;
@@ -18,21 +19,30 @@ namespace NAAProject.Controllers
             _signInManager = signInManager;
         }
 
-        public ActionResult GetUsers() { 
+
+        [Authorize(Roles = "User")]
+        public ActionResult GetUsers() {
+            //use later on for sessions
+            string userId = HttpContext.Session.GetString("userId");
+           
+
             return View(context.Users.ToList());
         }
 
+        [Authorize(Roles = "User")]
         public ActionResult GetRoles()
         {
             return View(context.Roles.ToList());
         }
 
+        [Authorize(Roles = "User")]
         public ActionResult AddRole()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = "User")]
         [ValidateAntiForgeryToken]
         public ActionResult AddRole(IFormCollection collection)
         {
@@ -44,13 +54,18 @@ namespace NAAProject.Controllers
             return RedirectToAction("GetRoles");
         }
 
+
+
+        [Authorize(Roles = "User")]
         public ActionResult GetRolesForUser()
         {
             FillInDropDowns();
             return View();
         }
 
+
         [HttpPost]
+        [Authorize(Roles = "User")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> GetRolesForUser(string userName)
         {
@@ -61,6 +76,7 @@ namespace NAAProject.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AddUserToRole()
         {
             FillInDropDowns();
@@ -68,6 +84,7 @@ namespace NAAProject.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "User")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddUserToRole(string username, string rolename)
         {

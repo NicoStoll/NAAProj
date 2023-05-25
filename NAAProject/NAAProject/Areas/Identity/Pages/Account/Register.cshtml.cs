@@ -18,6 +18,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using NAAProject.Data.Models.Domain;
+using NAAProject.Services.Service;
 
 namespace NAAProject.Areas.Identity.Pages.Account
 {
@@ -74,6 +76,18 @@ namespace NAAProject.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
+            /// 
+            [Required]
+            public string Name { get; set; }
+
+            [Required]
+            [Phone]
+            public string Phone { get; set; }
+
+            [Required]
+
+            public string Address { get; set; }
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -120,8 +134,23 @@ namespace NAAProject.Areas.Identity.Pages.Account
 
                 if (result.Succeeded)
                 {
-                    //Add later on
-                    //await _userManager.AddToRoleAsync(user, "User");
+
+                    await _userManager.AddToRoleAsync(user, "User");
+
+                    _logger.LogInformation(HttpContext.Session.GetString("userId"));
+
+                    User u = new User()
+                    {
+                        UserId = user.Id,
+                        Name = Input.Name,
+                        Email = Input.Email,
+                        Address = Input.Address,
+                        Phone = Input.Phone,
+
+                    };
+
+                    UserService userService = new UserService();
+                    userService.AddUser(u);
 
                     _logger.LogInformation("User created a new account with password.");
 

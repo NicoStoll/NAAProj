@@ -11,5 +11,7 @@ namespace NAAProject.Services.IService
     {
         IList<User> GetUsers();
         User GetUser(Application application);
+
+        void AddUser(User user);
     }
 }
