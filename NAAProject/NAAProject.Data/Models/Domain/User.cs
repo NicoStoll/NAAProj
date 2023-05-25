@@ -15,8 +15,8 @@ namespace NAAProject.Data.Models.Domain
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
-        public virtual ICollection<Application> Applications { get; set; }  
-        public virtual ICollection<University> Universities { get; set; }
+        public virtual ICollection<Application> Applications { get; set; }  = new List<Application>();
+        public virtual ICollection<University> Universities { get; set; } = new List<University>();
 
     }
 }
