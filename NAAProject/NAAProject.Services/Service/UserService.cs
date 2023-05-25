@@ -21,7 +21,8 @@ namespace NAAProject.Services.Service
         }
         public User GetUser(Application application)
         {
-            using (NAAContext context = new NAAContext()) {
+            using (NAAContext context = new NAAContext())
+            {
                 return userDAO.GetUser(application, context);
             }
         }
@@ -33,4 +34,5 @@ namespace NAAProject.Services.Service
                 return userDAO.GetUsers(context);
             }
         }
+    }
 }
