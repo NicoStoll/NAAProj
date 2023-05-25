@@ -13,6 +13,7 @@ namespace NAAProject.Data.Models.IDAO
 
         public void AddUser(NAAContext context, User user);
         public User GetUser(Application application, NAAContext context);
+        public User GetUser(NAAContext context, string id);
         public IList<User> GetUsers(NAAContext context);
 
         public void RemoveFromCollection(Application application, User user, NAAContext context);

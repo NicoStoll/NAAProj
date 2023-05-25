@@ -1,0 +1,28 @@
+﻿@model IEnumerable<NAAProject.Data.Models.Domain.Application>
+
+@{
+    ViewData["Title"] = "GetApplications";
+}
+
+<h1>GetApplications</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           <td>
+               @Html.ActionLink(item.Offer, "GetApplication", new {id = item.ApplicationId})
+           </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.ApplicationId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ApplicationId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

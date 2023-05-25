@@ -1,20 +1,32 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NAAProject.Data.Models.Domain;
+using NAAProject.Services.IService;
+using NAAProject.Services.Service;
 
 namespace NAAProject.Controllers
 {
     public class ApplicationController : Controller
     {
+        IApplicationService applicationService;
+
+        public ApplicationController()
+        {
+            applicationService = new ApplicationService();
+        }
         // GET: ApplicationController
         public ActionResult Index()
         {
             return View();
         }
-
+        public ActionResult GetApplications()
+        {
+            return View(applicationService.GetApplications());
+        }
         // GET: ApplicationController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            return View(applicationService.GetApplication(id));
         }
 
         // GET: ApplicationController/Create
@@ -26,11 +38,13 @@ namespace NAAProject.Controllers
         // POST: ApplicationController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Application application)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                applicationService.AddApplication(application, "mo");
+                return RedirectToAction("GetApplications", "Application",
+                    new {id = application.ApplicationId});
             }
             catch
             {
@@ -62,7 +76,8 @@ namespace NAAProject.Controllers
         // GET: ApplicationController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Application application = applicationService.GetApplication(id);
+            return View(application);
         }
 
         // POST: ApplicationController/Delete/5
@@ -72,7 +87,9 @@ namespace NAAProject.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                Application application = applicationService.GetApplication(id);
+                applicationService.DeleteApplication(id);
+                return RedirectToAction("GetApplications", "Application", application.ApplicationId);
             }
             catch
             {

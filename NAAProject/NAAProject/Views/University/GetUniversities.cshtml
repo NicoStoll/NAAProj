@@ -1,0 +1,30 @@
+﻿@model IEnumerable<NAAProject.Data.Models.Domain.University>
+
+@{
+    ViewData["Title"] = "GetUniversities";
+}
+
+<h1>GetUniversities</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    @Html.ActionLink(item.Name, "GetUniversity", new {id = item.UniversityId})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

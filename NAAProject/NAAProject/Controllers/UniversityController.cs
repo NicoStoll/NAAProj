@@ -1,16 +1,30 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using NAAProject.Services.IService;
+using NAAProject.Services.Service;
 
 namespace NAAProject.Controllers
 {
     public class UniversityController : Controller
     {
+        IUniversityService universityService;
+        public UniversityController() 
+        {
+            universityService = new UniversityService();
+        }
         // GET: UniversityController
         public ActionResult Index()
         {
             return View();
         }
-
+        public ActionResult GetUniversities()
+        {
+            return View(universityService.GetUniversities());
+        }
+        public ActionResult GetUniversity(int id)
+        {
+            return View(universityService.GetUniversity(id));
+        }
         // GET: UniversityController/Details/5
         public ActionResult Details(int id)
         {

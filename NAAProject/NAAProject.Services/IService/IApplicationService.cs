@@ -11,5 +11,7 @@ namespace NAAProject.Services.IService
     {
         IList<Application> GetApplications();
         Application GetApplication(int id);
+        bool AddApplication(Application application, string userId);
+        bool DeleteApplication(int id);
     }
 }
