@@ -14,7 +14,7 @@ namespace NAAProject.Services.Service
     public class UserService : IUserService
     {
 
-        IUsersDAO userDAO;
+        IUserDAO userDAO;
         public UserService()
         {
             userDAO = new UserDAO();

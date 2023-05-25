@@ -9,7 +9,7 @@ using NAAProject.Data.Models.Repository;
 
 namespace NAAProject.Data.Models.DAO
 {
-    public class UserDAO : IUsersDAO
+    public class UserDAO : IUserDAO
     {
         public User GetUser(Application application, NAAContext context) {
 
@@ -30,6 +30,15 @@ namespace NAAProject.Data.Models.DAO
         public IList<User> GetUsers(NAAContext context)
         {
             return context.Users.ToList();
+        }
+
+        public void RemoveFromCollection(Application application, User user, NAAContext context)
+        {
+            context.Users.Find(application.ApplicationId).Applications.Remove(application);
+        }
+        public void AddToCollection(Application application, string userId, NAAContext context)
+        {
+            context.Users.Find(userId).Applications.Add(application);
         }
     }
 }
