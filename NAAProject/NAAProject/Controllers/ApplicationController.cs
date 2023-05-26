@@ -84,6 +84,23 @@ namespace NAAProject.Controllers
             }
         }
 
+        public ActionResult Accept(int id) // Nicht fertig. TODO: User darf nur eine akzeptieren
+        {
+            Application application = applicationService.GetApplication(id);
+            application = new Application()
+            {
+                ApplicationId = application.ApplicationId,
+                Course = application.Course,
+                Statement = application.Statement,
+                TeacherContact = application.TeacherContact,
+                TeacherReference = application.TeacherReference,
+                Offer = application.Offer,
+                Firm = true
+            };
+            applicationService.UpdateApplication(application);
+            return RedirectToAction("GetApplication", "Application",
+                    new { id = application.ApplicationId });
+        }
         // GET: ApplicationController/Delete/5
         [Authorize(Roles = "User")]
         public ActionResult Delete(int id)

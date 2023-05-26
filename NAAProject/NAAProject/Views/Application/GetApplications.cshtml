@@ -19,8 +19,16 @@
                @Html.ActionLink(item.Offer, "GetApplication", new {id = item.ApplicationId})
            </td>
             <td>
-                <a asp-action="Details" asp-route-id="@item.ApplicationId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ApplicationId">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.ApplicationId">Details</a>
+                    @if (item.Offer == "P")
+                    {
+                <a asp-action="Delete" asp-route-id="@item.ApplicationId">| Delete</a>                       
+                    }
+                    @if(item.Offer == "C" || item.Offer == "U")
+                    {
+                        <a asp-action="Accept" asp-route-id="@item.ApplicationId">| Accept</a>
+                    }
+
             </td>
         </tr>
 }

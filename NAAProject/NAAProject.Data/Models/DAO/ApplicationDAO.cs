@@ -11,14 +11,18 @@ namespace NAAProject.Data.Models.DAO
 {
     public class ApplicationDAO : IApplicationDAO
     {
+        IUserDAO userDAO;
+
         public ApplicationDAO()
         {
-           
+           userDAO = new UserDAO();
         }
         public IList<Application> GetApplications(NAAContext context)
         {
             return context.Applications.ToList();
         }
+         
+         
         public Application GetApplication(NAAContext context, int id)
         {
             context.Applications.ToList();
