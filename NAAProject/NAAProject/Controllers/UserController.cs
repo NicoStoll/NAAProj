@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using NAAProject.Services.Service;
 using NAAProject.Services.IService;
 using NAAProject.Data.Models.Domain;
+using Microsoft.AspNetCore.Identity;
+using NAAProject.Data;
 
 namespace NAAProject.Controllers
 {
@@ -12,10 +14,12 @@ namespace NAAProject.Controllers
     {
 
         IUserService userService;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
-        public UserController()
+        public UserController(SignInManager<IdentityUser> signInManager)
         {
             userService = new UserService();
+            _signInManager = signInManager;
         }
 
         // GET: UserController
@@ -85,21 +89,31 @@ namespace NAAProject.Controllers
         }
 
         // GET: UserController/Delete/5
-        [Authorize(Roles = "User")]
-        public ActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Delete(string userId)
         {
-            return View();
+            User u = userService.GetUser(userId);
+            return View(u);
         }
 
         // POST: UserController/Delete/5
         [HttpPost]
         [Authorize(Roles = "User")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(string UserId, IFormCollection collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+
+                //remove user info
+                User u = userService.GetUser(UserId);
+                userService.DeleteUser(u);
+
+                //remove from identity
+                IdentityUser user = await _signInManager.UserManager.FindByIdAsync(UserId);
+                _signInManager.UserManager.DeleteAsync(user);
+
+                return RedirectToAction("Admin", "Home");
             }
             catch
             {
