@@ -28,7 +28,8 @@ namespace NAAProject.Data.Models.DAO
         {
             //Maximal 5 pro User erlauben
             context.Applications.Add(application);
-        }
+			context.SaveChanges();
+		}
         public void DeleteApplication(NAAContext context, Application application)
         {
             context.Applications.Remove(application);

@@ -13,5 +13,8 @@ namespace NAAProject.Services.IService
         Application GetApplication(int id);
         bool AddApplication(Application application, string userId);
         bool DeleteApplication(int id);
-    }
+
+        public bool UpdateApplication(Application application);
+
+	}
 }

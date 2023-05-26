@@ -37,7 +37,29 @@ namespace NAAProject.Services.Service
                 return applicationDAO.GetApplications(context);
             }
         }
-        public bool AddApplication(Application application, string userId)
+
+
+		public bool UpdateApplication(Application application)
+		{
+			
+			try
+			{
+				using (NAAContext context = new NAAContext())
+				{
+					applicationDAO.UpdateApplication(context, application);
+					context.SaveChanges();
+				}
+
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
+		}
+
+
+		public bool AddApplication(Application application, string userId)
         {
             try
             {

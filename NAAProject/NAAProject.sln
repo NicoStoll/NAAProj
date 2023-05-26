@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NAAProject.Services", "NAAP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NAAProject.OutServices", "NAAProject.OutServices\NAAProject.OutServices.csproj", "{5547089B-07CC-4232-8D75-EB2521B86887}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NAAProjectWebApi", "NAAProjectWebApi\NAAProjectWebApi.csproj", "{32CABBCB-1CF6-4ED1-84EB-F376545848ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Services", "Service.Services\Service.Services.csproj", "{9F75BF60-3C18-4D4B-BB10-EF9D94DA999F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service.Services", "Service.Services\Service.Services.csproj", "{9F75BF60-3C18-4D4B-BB10-EF9D94DA999F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NAAProjectWebApi", "NAAProjectWebApi\NAAProjectWebApi.csproj", "{16E589A5-FDFA-4DAB-98D5-A85EE63459C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,14 +37,14 @@ Global
 		{5547089B-07CC-4232-8D75-EB2521B86887}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5547089B-07CC-4232-8D75-EB2521B86887}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5547089B-07CC-4232-8D75-EB2521B86887}.Release|Any CPU.Build.0 = Release|Any CPU
-		{32CABBCB-1CF6-4ED1-84EB-F376545848ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{32CABBCB-1CF6-4ED1-84EB-F376545848ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{32CABBCB-1CF6-4ED1-84EB-F376545848ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{32CABBCB-1CF6-4ED1-84EB-F376545848ED}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9F75BF60-3C18-4D4B-BB10-EF9D94DA999F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9F75BF60-3C18-4D4B-BB10-EF9D94DA999F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F75BF60-3C18-4D4B-BB10-EF9D94DA999F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F75BF60-3C18-4D4B-BB10-EF9D94DA999F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16E589A5-FDFA-4DAB-98D5-A85EE63459C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16E589A5-FDFA-4DAB-98D5-A85EE63459C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16E589A5-FDFA-4DAB-98D5-A85EE63459C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16E589A5-FDFA-4DAB-98D5-A85EE63459C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
