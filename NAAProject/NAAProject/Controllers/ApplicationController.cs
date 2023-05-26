@@ -25,7 +25,8 @@ namespace NAAProject.Controllers
         [Authorize(Roles = "User")]
         public ActionResult GetApplications()
         {
-            return View(applicationService.GetApplications());
+            string userId = HttpContext.Session.GetString("userId");
+            return View(applicationService.GetApplications(userId));
         }
         // GET: ApplicationController/Details/5
         [Authorize(Roles = "User")]

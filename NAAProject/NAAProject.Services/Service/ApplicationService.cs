@@ -32,11 +32,11 @@ namespace NAAProject.Services.Service
             }
         }
 
-        public IList<Application> GetApplications()
+        public IList<Application> GetApplications(string userId)
         {
             using (NAAContext context = new NAAContext())
             {
-                return applicationDAO.GetApplications(context);
+                return userDAO.GetApplicationCollection(context, userId);
             }
         }
 
@@ -68,7 +68,7 @@ namespace NAAProject.Services.Service
                 using (NAAContext context = new NAAContext())
                 {
                  
-                 if (userDAO.GetUser(context, userId).Applications.ToList().Count() >= 5) return false;        
+                 if (userDAO.GetApplicationCollection(context, userId).Count() >= 5) return false;        
                     applicationDAO.AddApplication(context, application);
                     userDAO.AddToCollection(application, userId, context);
                     universityDAO.AddToCollection(application, uniId, context);
