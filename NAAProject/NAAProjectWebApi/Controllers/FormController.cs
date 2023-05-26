@@ -61,11 +61,6 @@ namespace NAAProjectWebApi.Controllers
 
         }
 
-		// POST api/<FormController>
-		[HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
 
 		// PUT api/<FormController>/5
 		[HttpPut("{id}")]
@@ -78,17 +73,10 @@ namespace NAAProjectWebApi.Controllers
 			} else {
 				return StatusCode(StatusCodes.Status400BadRequest);
 			}
-		
-			
-
 
 
 		}
 
-		// DELETE api/<FormController>/5
-		[HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+		
     }
 }
