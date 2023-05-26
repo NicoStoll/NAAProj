@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using NAAProject.Data.Models.Domain;
 using NAAProject.Data.Models.IDAO;
 using NAAProject.Data.Models.Repository;
@@ -12,11 +13,12 @@ namespace NAAProject.Data.Models.DAO
 {
     public class UniversityDAO : IUniversityDAO
     {
-        public IList<University> GetUniversities(NAAContext context)
-        {
-            return context.Universities.ToList();
-        }
-        public University GetUniversity(NAAContext context, int id)
+		public IList<University> GetUniversities(NAAContext context)
+		{
+			context.Universities.Include(user => user.Applications).ToList();
+			return context.Universities.ToList();
+		}
+		public University GetUniversity(NAAContext context, int id)
         {
             context.Universities.ToList();
             return context.Universities.Find(id);

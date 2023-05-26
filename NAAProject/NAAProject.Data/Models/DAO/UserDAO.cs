@@ -38,7 +38,9 @@ namespace NAAProject.Data.Models.DAO
 
         public IList<User> GetUsers(NAAContext context)
         {
-            return context.Users.ToList();
+			context.Users.Include(user => user.Applications).ToList();
+			context.Users.Include(user => user.Universities).ToList();
+			return context.Users.ToList();
         }
 
         public void RemoveFromCollection(Application application, User user, NAAContext context)

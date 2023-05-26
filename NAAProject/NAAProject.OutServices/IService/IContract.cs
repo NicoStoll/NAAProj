@@ -9,6 +9,6 @@ namespace NAAProject.OutServices.IService
 {
 	public interface IContract
 	{
-		Style[] GetRecordStyles();
+		public List<ApplicationForm> GetForms(string uniName);
 	}
 }
