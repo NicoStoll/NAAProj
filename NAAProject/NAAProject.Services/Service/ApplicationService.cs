@@ -75,7 +75,7 @@ namespace NAAProject.Services.Service
 		}
 
 
-		public bool AddApplication(Application application, string userId, int uniId)
+		public bool AddApplication(Application application, string userId)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace NAAProject.Services.Service
                  if (userDAO.GetApplicationCollection(context, userId).Count() >= 5) return false;        
                     applicationDAO.AddApplication(context, application);
                     userDAO.AddToCollection(application, userId, context);
-                    universityDAO.AddToCollection(application, uniId, context);
+                    //universityDAO.AddToCollection(application, uniId, context);
                     context.SaveChanges();
                 } 
                 

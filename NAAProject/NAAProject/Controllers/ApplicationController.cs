@@ -36,9 +36,20 @@ namespace NAAProject.Controllers
 
         // GET: ApplicationController/Create
         [Authorize(Roles = "User")]
-        public ActionResult Create()
+        public ActionResult Create(int uniId, string uniName)
         {
-            return View();
+            ViewBag.UniId = uniId;
+            ViewBag.UniName = uniName;
+            Application app = new Application
+            {
+                ApplicationId= -0,
+                Course = ViewBag.uniName,
+                Statement = "",
+                TeacherContact = "",
+                Offer = "P",
+                Firm = false,
+            };
+            return View(app);
         }
 
         // POST: ApplicationController/Create
@@ -51,7 +62,7 @@ namespace NAAProject.Controllers
             {
                 string userId = HttpContext.Session.GetString("userId");
 
-                applicationService.AddApplication(application, userId, ViewBag.uniId);
+                applicationService.AddApplication(application, userId);
                 return RedirectToAction("GetApplications", "Application",
                     new {id = application.ApplicationId});
             }

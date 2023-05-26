@@ -6,9 +6,6 @@
 
 <h1>GetCourses</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -55,7 +52,7 @@
                 @Html.DisplayFor(modelItem => item.Nss)
             </td>
             <td>
-                    @Html.ActionLink("Apply", "Create", "Application")
+                    @Html.ActionLink("Apply", "Create", "Application", new { uniId= 1, uniName= item.Name} )
         </tr>
 }
     </tbody>
