@@ -10,5 +10,6 @@ namespace NAAProject.OutServices.IService
 	public interface IContract
 	{
 		public List<ApplicationForm> GetForms(string uniName);
+		public void MakeOffer(int id, string value);
 	}
 }

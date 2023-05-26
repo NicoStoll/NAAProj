@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using NAAProject.Data.Models.Domain;
 using NAAProject.OutServices.IService;
 using NAAProject.OutServices.Models;
@@ -50,6 +51,47 @@ namespace NAAProject.OutServices.Service
 			}
 
 			return applicationForms;
+		}
+
+		public void MakeOffer(int id, string value)
+		{
+			IUserService userService;
+			userService = new UserService();
+
+			User[] users = userService.GetUsers().ToArray();
+			List<ApplicationForm> applicationForms = new List<ApplicationForm>();
+
+			IApplicationService applicationService;
+			applicationService = new ApplicationService();
+
+			
+
+			for (int i = 0; i < users.Length; i++)
+			{
+				for (int j = 0; j < users[i].Universities.ToArray().Length; j++)
+				{
+
+					if (users[i].Applications.ToArray()[j].ApplicationId == id)
+					{
+						//int ApplicationId = users[i].Applications.ToArray()[j].ApplicationId;
+						//string Course = users[i].Applications.ToArray()[j].Course;
+						//string Statement = users[i].Applications.ToArray()[j].Statement;
+						//string TeacherContact = users[i].Applications.ToArray()[j].TeacherContact;
+						//string TeacherReference = users[i].Applications.ToArray()[j].TeacherReference;
+						//bool Firm = users[i].Applications.ToArray()[j].Firm;
+						//string Offer = value;
+
+						Application applicationUpdated = users[i].Applications.ToArray()[j];
+
+						applicationUpdated.Offer = value;
+
+						applicationService.UpdateApplication(applicationUpdated);
+
+
+
+					}
+				}
+			}
 		}
 	}
 }

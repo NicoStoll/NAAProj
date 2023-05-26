@@ -25,7 +25,7 @@ namespace NAAProjectWebApi.Controllers
             service = new FormService();
         }
 
-        // GET: api/<StyleController>
+        // GET: api/<FormController>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -43,8 +43,8 @@ namespace NAAProjectWebApi.Controllers
             //return StatusCode(StatusCodes.Status200OK, students);
         }
 
-        // GET api/<StyleController>/5
-        [HttpGet("{uniName}")]
+		// GET api/<FormController>/5
+		[HttpGet("{uniName}")]
         public async Task<IActionResult> Get(string uniName)
         {
 
@@ -60,20 +60,26 @@ namespace NAAProjectWebApi.Controllers
 
         }
 
-        // POST api/<StyleController>
-        [HttpPost]
+		// POST api/<FormController>
+		[HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<StyleController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+		// PUT api/<FormController>/5
+		[HttpPut("{id}")]
+        public StatusCodeResult Put(int id, [FromBody] string value)
 
-        // DELETE api/<StyleController>/5
-        [HttpDelete("{id}")]
+        {
+			service.MakeOffer(id,value);
+			return StatusCode(StatusCodes.Status204NoContent);
+
+
+
+		}
+
+		// DELETE api/<FormController>/5
+		[HttpDelete("{id}")]
         public void Delete(int id)
         {
         }
