@@ -53,7 +53,7 @@ namespace NAAProject.OutServices.Service
 			return applicationForms;
 		}
 
-		public void MakeOffer(int id, string value)
+		public bool MakeOffer(int id, string comingOffer, int unıversıtyId)
 		{
 			IUserService userService;
 			userService = new UserService();
@@ -68,30 +68,53 @@ namespace NAAProject.OutServices.Service
 
 			for (int i = 0; i < users.Length; i++)
 			{
-				for (int j = 0; j < users[i].Universities.ToArray().Length; j++)
+				for (int j = 0; j < users[i].Applications.ToArray().Length; j++)
 				{
-
+					//receive the exact application
 					if (users[i].Applications.ToArray()[j].ApplicationId == id)
 					{
-						//int ApplicationId = users[i].Applications.ToArray()[j].ApplicationId;
-						//string Course = users[i].Applications.ToArray()[j].Course;
-						//string Statement = users[i].Applications.ToArray()[j].Statement;
-						//string TeacherContact = users[i].Applications.ToArray()[j].TeacherContact;
-						//string TeacherReference = users[i].Applications.ToArray()[j].TeacherReference;
-						//bool Firm = users[i].Applications.ToArray()[j].Firm;
-						//string Offer = value;
 
+						//change the type of the offer
+						String updatedOffer = comingOffer.ToString();
 						Application applicationUpdated = users[i].Applications.ToArray()[j];
+						String previousOffer = applicationUpdated.Offer;
 
-						applicationUpdated.Offer = value;
+						if (previousOffer.Equals("P"))
+						{
+							if (updatedOffer.Equals("R") || updatedOffer.Equals("C") || updatedOffer.Equals("U"))
+							{
+								applicationUpdated.Offer = updatedOffer;
+								applicationService.UpdateApplication(applicationUpdated);
+								return true;
 
-						applicationService.UpdateApplication(applicationUpdated);
+							}
+							return false;
+						}
+						else if (previousOffer.Equals("R") || previousOffer.Equals("U"))
+						{
+							return false;
+						}
+						else if (previousOffer.Equals("C"))
+						{
+							if (updatedOffer.Equals("U") || updatedOffer.Equals("R"))
+							{
+								applicationUpdated.Offer = updatedOffer;
+								applicationService.UpdateApplication(applicationUpdated);
+								return true;
+							}
+							return false;
+						}
+						else
+						{
+							return false;
 
-
-
+						}
 					}
+				
 				}
 			}
+
+			return false;
 		}
 	}
 }
