@@ -19,14 +19,14 @@ namespace NAAProject.Controllers
             _signInManager = signInManager;
         }
 
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "Admin")]
         public ActionResult AddRole()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult AddRole(IFormCollection collection)
         {
@@ -40,7 +40,7 @@ namespace NAAProject.Controllers
 
 
 
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "Admin")]
         public ActionResult GetRolesForUser()
         {
             FillInDropDowns();
@@ -49,7 +49,7 @@ namespace NAAProject.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> GetRolesForUser(string userName)
         {
@@ -60,7 +60,7 @@ namespace NAAProject.Controllers
 
         }
 
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "Admin")]
         public ActionResult AddUserToRole()
         {
             FillInDropDowns();
@@ -68,7 +68,7 @@ namespace NAAProject.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddUserToRole(string username, string rolename)
         {
