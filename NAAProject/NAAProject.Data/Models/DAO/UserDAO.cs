@@ -49,10 +49,8 @@ namespace NAAProject.Data.Models.DAO
         }
         public void AddToCollection(Application application, string userId, NAAContext context)
         {
-            Application app = context.Applications.Find(application.ApplicationId);
 
-
-            context.Users.Find(userId).Applications.Add(app);
+            context.Users.Find(userId).Applications.Add(application);
         }
 
         public void AddUser(NAAContext context, User user)
@@ -64,6 +62,26 @@ namespace NAAProject.Data.Models.DAO
         {
             User u = context.Users.Find(user.UserId);
             context.Entry(u).CurrentValues.SetValues(user);
+        }
+
+        public IList<Application> GetApplicationCollection(NAAContext context, string userId)
+        {
+            return context.Users.Find(userId).Applications.ToList();
+        }
+
+        public IList<University> GetUniversitiesCollection(NAAContext context, string userId)
+        {
+            return context.Users.Find(userId).Universities.ToList();
+        }
+
+        public void RemoveUniversityFromCollection(University university, User user, NAAContext context)
+        {
+            context.Users.Find(user.UserId).Universities.Remove(university);
+        }
+
+        public void DeleteUser(NAAContext context, User user)
+        {
+            context.Users.Remove(user);
         }
     }
 }

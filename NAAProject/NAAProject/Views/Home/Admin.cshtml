@@ -14,7 +14,7 @@
     <p>
         @user.UserName |
         @Html.ActionLink("Edit", "EditUser", new {id = user.Id}) |
-        @Html.ActionLink("Delete", "DeleteUser", new {id = user.Id})
+        @Html.ActionLink("Delete", "Delete", "User", new {id = user.Id})
     </p>
 }
 

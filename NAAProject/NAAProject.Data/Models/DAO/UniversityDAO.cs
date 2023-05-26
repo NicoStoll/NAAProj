@@ -27,19 +27,16 @@ namespace NAAProject.Data.Models.DAO
         public void AddUniversity(NAAContext context, University university)
         {
             context.Universities.Add(university);
-            context.SaveChanges();
         }
 
         public void DeleteUniversity(NAAContext context, University university)
         {
             context.Universities.Remove(university);
-            context.SaveChanges();
         }
         public void UpdateUniversity(NAAContext context, University university)
         {
             University a = context.Universities.Find(university.UniversityId);
             context.Entry(a).CurrentValues.SetValues(university);
-            context.SaveChanges();
         }
         public void AddToCollection(Application application, int uniId, NAAContext context)
         {

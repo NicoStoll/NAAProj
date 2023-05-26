@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NAAProject.Data.Models.Domain;
+﻿using NAAProject.Data.Models.Domain;
 
 namespace NAAProject.Services.IService
 {
@@ -17,5 +12,7 @@ namespace NAAProject.Services.IService
         void AddUser(User user);
 
         void UpdateUser(User user);
+
+        void DeleteUser(User user);
     }
 }

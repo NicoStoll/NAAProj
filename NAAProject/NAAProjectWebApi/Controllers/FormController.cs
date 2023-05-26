@@ -25,18 +25,19 @@ namespace NAAProjectWebApi.Controllers
             service = new FormService();
         }
 
-        // GET: api/<FormController>
-        [HttpGet]
-        public async Task<IActionResult> Get()
+		// GET: api/<FormController>/allUsers
+		[HttpGet("allUsers")]
+		public async Task<IActionResult> Get()
         {
-            IUniversityService universityService;
-            universityService = new UniversityService();
-            University[] uni = universityService.GetUniversities().ToArray();
-            JsonConvert.SerializeObject(uni);
 
-            if (uni == null)
-                return NotFound();
-            return Ok(uni);
+            IUserService userService = new UserService();
+            User[] users = userService.GetUsers().ToArray();
+
+            if (users == null) {
+				return StatusCode(StatusCodes.Status404NotFound, "There is no user in the system yet!");
+			}
+
+            return Ok(users);
 
 
 
@@ -71,8 +72,14 @@ namespace NAAProjectWebApi.Controllers
         public StatusCodeResult Put(int id, [FromBody] string value)
 
         {
-			service.MakeOffer(id,value);
-			return StatusCode(StatusCodes.Status204NoContent);
+
+            if (service.MakeOffer(id, value)) {
+				return StatusCode(StatusCodes.Status200OK);
+			} else {
+				return StatusCode(StatusCodes.Status400BadRequest);
+			}
+		
+			
 
 
 

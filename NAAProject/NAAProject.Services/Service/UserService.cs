@@ -15,9 +15,11 @@ namespace NAAProject.Services.Service
     {
 
         IUserDAO userDAO;
+        IApplicationDAO applicationDAO;
         public UserService()
         {
             userDAO = new UserDAO();
+            applicationDAO = new ApplicationDAO();
         }
 
         public void AddUser(User user)
@@ -26,6 +28,39 @@ namespace NAAProject.Services.Service
             {
                 userDAO.AddUser(context, user);
                 context.SaveChanges();
+            }
+        }
+
+        public void DeleteUser(User user)
+        {
+            try
+            {
+                using (NAAContext context = new NAAContext())
+                {
+                    User u = userDAO.GetUser(context, user.UserId);
+
+                    //remove all applications of user
+                    IList<Application> applications = userDAO.GetApplicationCollection(context, u.UserId);
+                    for (int i = 0; i < applications.Count; i++)
+                    {
+                        applicationDAO.DeleteApplication(context, applications[i]);
+                    }
+
+                    //remove all links to university
+                    IList<University> universities = userDAO.GetUniversitiesCollection(context, u.UserId);
+                    for (int i = 0; i < applications.Count; i++)
+                    {
+                        userDAO.RemoveUniversityFromCollection(universities[i], u, context);
+                    }
+
+                    //remove user
+                    userDAO.DeleteUser(context, u);
+
+                    context.SaveChanges();
+                }
+            } catch
+            {
+
             }
         }
 

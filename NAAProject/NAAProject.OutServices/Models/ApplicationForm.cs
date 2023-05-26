@@ -27,10 +27,7 @@ namespace NAAProject.OutServices.Models
 			Applications = Application;
 		}
 
-		public static implicit operator ApplicationForm(User user)
-		{
-			return new ApplicationForm(user.Name,user.Address,user.Phone,user.Email, user.Applications);
-		}
+	
 	
 	}
 }
