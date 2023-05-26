@@ -11,7 +11,6 @@ namespace NAAProject.Controllers
     public class ApplicationController : Controller
     {
         IApplicationService applicationService;
-
         public ApplicationController()
         {
             applicationService = new ApplicationService();
@@ -85,8 +84,15 @@ namespace NAAProject.Controllers
             }
         }
 
-        public ActionResult Accept(int id) // Nicht fertig. TODO: User darf nur eine akzeptieren
+        public ActionResult Accept(int id, string userId) 
         {
+            foreach (Application app in applicationService.GetApplications(userId)){
+                if (app.Firm)
+                {
+                    return RedirectToAction("GetApplication", "Application",
+                    new { id = app.ApplicationId });
+                }
+            }
             Application application = applicationService.GetApplication(id);
             application = new Application()
             {

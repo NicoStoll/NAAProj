@@ -24,7 +24,7 @@
                     {
                 <a asp-action="Delete" asp-route-id="@item.ApplicationId">| Delete</a>                       
                     }
-                    @if(item.Offer == "C" || item.Offer == "U")
+                    @if(item.Offer == "C" || item.Offer == "U") 
                     {
                         <a asp-action="Accept" asp-route-id="@item.ApplicationId">| Accept</a>
                     }

@@ -39,9 +39,17 @@ namespace NAAProject.Services.Service
                 return userDAO.GetApplicationCollection(context, userId);
             }
         }
+        public IList<Application> GetApplications()
+        {
+            using (NAAContext context = new NAAContext())
+            {
+                return applicationDAO.GetApplications(context);
+            }
+        }
 
 
-		public bool UpdateApplication(Application application)
+
+        public bool UpdateApplication(Application application)
 		{
 			
 			try
