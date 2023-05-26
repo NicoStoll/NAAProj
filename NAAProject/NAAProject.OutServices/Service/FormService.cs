@@ -53,13 +53,12 @@ namespace NAAProject.OutServices.Service
 			return applicationForms;
 		}
 
-		public bool MakeOffer(int id, string comingOffer, int unıversıtyId)
+		public bool MakeOffer(int id, string comingOffer)
 		{
 			IUserService userService;
 			userService = new UserService();
 
 			User[] users = userService.GetUsers().ToArray();
-			List<ApplicationForm> applicationForms = new List<ApplicationForm>();
 
 			IApplicationService applicationService;
 			applicationService = new ApplicationService();

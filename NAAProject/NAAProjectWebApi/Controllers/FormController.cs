@@ -72,8 +72,14 @@ namespace NAAProjectWebApi.Controllers
         public StatusCodeResult Put(int id, [FromBody] string value)
 
         {
-			service.MakeOffer(id,value,0);
-			return StatusCode(StatusCodes.Status204NoContent);
+
+            if (service.MakeOffer(id, value)) {
+				return StatusCode(StatusCodes.Status200OK);
+			} else {
+				return StatusCode(StatusCodes.Status400BadRequest);
+			}
+		
+			
 
 
 
