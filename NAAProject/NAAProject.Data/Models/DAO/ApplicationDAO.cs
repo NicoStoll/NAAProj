@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NAAProject.Data.Models.Domain;
+﻿using NAAProject.Data.Models.Domain;
 using NAAProject.Data.Models.IDAO;
 using NAAProject.Data.Models.Repository;
 
@@ -17,6 +12,8 @@ namespace NAAProject.Data.Models.DAO
         {
            userDAO = new UserDAO();
         }
+
+      
         public IList<Application> GetApplications(NAAContext context)
         {
             return context.Applications.ToList();

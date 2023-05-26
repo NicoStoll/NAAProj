@@ -9,7 +9,7 @@ namespace NAAProject.Services.IService
 {
     public interface IApplicationService
     {
-        IList<Application> GetApplications();
+        IList<Application> GetApplications(string userId);
         Application GetApplication(int id);
         bool AddApplication(Application application, string userId, int uniId);
         bool DeleteApplication(int id);
