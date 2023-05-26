@@ -84,12 +84,14 @@ namespace NAAProject.Controllers
             }
         }
 
-        public ActionResult Accept(int id, string userId) 
+        public ActionResult Accept(int id) 
         {
+            string userId = HttpContext.Session.GetString("userId");
+
             foreach (Application app in applicationService.GetApplications(userId)){
                 if (app.Firm)
                 {
-                    return RedirectToAction("GetApplication", "Application",
+                    return RedirectToAction("Details", "Application",
                     new { id = app.ApplicationId });
                 }
             }

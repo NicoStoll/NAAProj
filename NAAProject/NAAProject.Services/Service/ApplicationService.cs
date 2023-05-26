@@ -25,10 +25,16 @@ namespace NAAProject.Services.Service
         }
         public Application GetApplication(int id)
         {
-            using (NAAContext context = new NAAContext())
+            try
             {
-                Application application = applicationDAO.GetApplication(context, id);
-                return application;
+                using (NAAContext context = new NAAContext())
+                {
+                    Application application = applicationDAO.GetApplication(context, id);
+                    return application;
+                }
+            } catch
+            {
+                return null;
             }
         }
 

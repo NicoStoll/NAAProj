@@ -66,6 +66,7 @@ namespace NAAProject.Data.Models.DAO
 
         public IList<Application> GetApplicationCollection(NAAContext context, string userId)
         {
+            context.Users.Include(user => user.Applications).ToList();
             return context.Users.Find(userId).Applications.ToList();
         }
 

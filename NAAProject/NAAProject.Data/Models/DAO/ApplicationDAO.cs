@@ -28,7 +28,6 @@ namespace NAAProject.Data.Models.DAO
 
         public void AddApplication(NAAContext context, Application application)
         {
-            //Maximal 5 pro User erlauben
             context.Applications.Add(application);
 		}
         public void DeleteApplication(NAAContext context, Application application)
