@@ -51,7 +51,7 @@ namespace NAAProject.Controllers
             {
                 string userId = HttpContext.Session.GetString("userId");
 
-                applicationService.AddApplication(application, userId);
+                applicationService.AddApplication(application, userId, ViewBag.uniId);
                 return RedirectToAction("GetApplications", "Application",
                     new {id = application.ApplicationId});
             }

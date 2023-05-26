@@ -21,7 +21,7 @@ namespace NAAProject.Controllers
             return View();
         }
 
-        [Authorize(Roles = "User")]
+       // [Authorize(Roles = "User")]
         public ActionResult GetUniversities()
         {
             return View(universityService.GetUniversities());

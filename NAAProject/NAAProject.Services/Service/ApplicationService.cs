@@ -16,10 +16,12 @@ namespace NAAProject.Services.Service
     {
         IApplicationDAO applicationDAO;
         IUserDAO userDAO;
+        IUniversityDAO universityDAO;
         public ApplicationService()
         {
             applicationDAO = new ApplicationDAO();
             userDAO = new UserDAO();
+            universityDAO = new UniversityDAO();
         }
         public Application GetApplication(int id)
         {
@@ -59,7 +61,7 @@ namespace NAAProject.Services.Service
 		}
 
 
-		public bool AddApplication(Application application, string userId)
+		public bool AddApplication(Application application, string userId, int uniId)
         {
             try
             {
@@ -68,6 +70,7 @@ namespace NAAProject.Services.Service
                  //       if (userDAO.GetUser(context, userId).Applications.ToList().Count() >= 5) return false;        
                     applicationDAO.AddApplication(context, application);
                     userDAO.AddToCollection(application, userId, context);
+                    universityDAO.AddToCollection(application, uniId, context);
                     context.SaveChanges();
                 } 
                 

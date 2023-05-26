@@ -51,7 +51,7 @@ app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Application}/{action=GetApplications}/{id?}");
+    pattern: "{controller=University}/{action=GetUniversities}");
 app.MapRazorPages();
 
 app.Run();

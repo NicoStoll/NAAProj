@@ -15,5 +15,6 @@ namespace NAAProject.Data.Models.IDAO
         void AddUniversity(NAAContext context, University university);
         void DeleteUniversity(NAAContext context, University university);
         void UpdateUniversity(NAAContext context, University university);
+        void AddToCollection(Application application, int uniId, NAAContext context);
     }
 }

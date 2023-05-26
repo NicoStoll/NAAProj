@@ -11,31 +11,31 @@ namespace NAAProject.Controllers
         public SHUController() 
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri("54.235.143.83/api/shu");
+            client.BaseAddress = new Uri("http://54.235.143.83/api/shu");
         }
-        public IList<Course> GetCourses()
+        public ActionResult GetCourses()
         {
         IList<Course> courses = new List<Course>();
         HttpResponseMessage response = client.GetAsync(client.BaseAddress).Result;
             if (!response.IsSuccessStatusCode)
-                return courses;
+                return View();
             string data = response.Content.ReadAsStringAsync().Result;
-            dynamic[] dynamics = JsonConvert.DeserializeObject<dynamic>(data);
+            dynamic[] dynamics = JsonConvert.DeserializeObject<dynamic[]>(data);
             foreach(var item in dynamics)
             {
                 courses.Add(new Course
                 {
-                    Code = item.Code,
-                    Name = item.Name,
-                    Deegree = item.Degree,
-                    University = item.University,
-                    Overview = item.Overview,
-                    Entry = item.Entry,
-                    Nss = item.Nss
+                    Code = item.code,
+                    Name = item.name,
+                    Deegree = item.degree,
+                    University = item.university,
+                    Overview = item.overview,
+                    Entry = item.entry,
+                    Nss = item.nss
                 }
                     );
                            }
-            return courses;
+            return View(courses);
         }
         // GET: SHUController
         public ActionResult Index()

@@ -15,8 +15,8 @@ namespace NAAProject.Data.Models.Domain
         public string Statement { get; set; }
         public string TeacherContact { get; set; }
         public string TeacherReference { get; set; }
-        public string Offer { get; set; }
-        public bool Firm { get; set; }
+        public string Offer { get; set; } = "P";
+        public bool Firm { get; set; } = false;
 
     }
 }

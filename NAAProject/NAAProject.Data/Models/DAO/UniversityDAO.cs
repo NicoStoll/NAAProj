@@ -8,6 +8,7 @@ using NAAProject.Data.Models.Domain;
 using NAAProject.Data.Models.IDAO;
 using NAAProject.Data.Models.Repository;
 using static System.Net.Mime.MediaTypeNames;
+using Application = NAAProject.Data.Models.Domain.Application;
 
 namespace NAAProject.Data.Models.DAO
 {
@@ -39,6 +40,13 @@ namespace NAAProject.Data.Models.DAO
             University a = context.Universities.Find(university.UniversityId);
             context.Entry(a).CurrentValues.SetValues(university);
             context.SaveChanges();
+        }
+        public void AddToCollection(Application application, int uniId, NAAContext context)
+        {
+            Application app = context.Applications.Find(application.ApplicationId);
+
+
+            context.Universities.Find(uniId).Applications.Add(app);
         }
     }
 }
