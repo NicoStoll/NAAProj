@@ -65,7 +65,8 @@ namespace NAAProject.Services.Service
             {
                 using (NAAContext context = new NAAContext())
                 {
-                 //       if (userDAO.GetUser(context, userId).Applications.ToList().Count() >= 5) return false;        
+                 
+                 if (userDAO.GetUser(context, userId).Applications.ToList().Count() >= 5) return false;        
                     applicationDAO.AddApplication(context, application);
                     userDAO.AddToCollection(application, userId, context);
                     context.SaveChanges();

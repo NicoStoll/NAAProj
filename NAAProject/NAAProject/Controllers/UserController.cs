@@ -48,7 +48,6 @@ namespace NAAProject.Controllers
             return View();
         }
 
-        // POST: UserController/Create
         [HttpPost]
         [Authorize(Roles = "User")]
         [ValidateAntiForgeryToken]
@@ -64,14 +63,12 @@ namespace NAAProject.Controllers
             }
         }
 
-        // GET: UserController/Edit/5
         [Authorize(Roles = "User")]
         public ActionResult Edit(string id)
         {
             return View(userService.GetUser(id));
         }
 
-        // POST: UserController/Edit/5
         [HttpPost]
         [Authorize(Roles = "User")]
         [ValidateAntiForgeryToken]
@@ -88,29 +85,26 @@ namespace NAAProject.Controllers
             }
         }
 
-        // GET: UserController/Delete/5
         [Authorize(Roles = "Admin")]
-        public ActionResult Delete(string userId)
+        public ActionResult Delete(string id)
         {
-            User u = userService.GetUser(userId);
+            User u = userService.GetUser(id);
             return View(u);
         }
 
-        // POST: UserController/Delete/5
         [HttpPost]
         [Authorize(Roles = "User")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(string UserId, IFormCollection collection)
+        public async Task<ActionResult> Delete(string id, IFormCollection collection)
         {
             try
             {
 
                 //remove user info
-                User u = userService.GetUser(UserId);
-                userService.DeleteUser(u);
+                userService.DeleteUser(userService.GetUser(id));
 
                 //remove from identity
-                IdentityUser user = await _signInManager.UserManager.FindByIdAsync(UserId);
+                IdentityUser user = await _signInManager.UserManager.FindByIdAsync(id);
                 _signInManager.UserManager.DeleteAsync(user);
 
                 return RedirectToAction("Admin", "Home");

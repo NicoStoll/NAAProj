@@ -33,26 +33,34 @@ namespace NAAProject.Services.Service
 
         public void DeleteUser(User user)
         {
-            using (NAAContext context = new NAAContext())
+            try
             {
-                //remove all applications of user
-                IList<Application> applications = userDAO.GetApplicationCollection(context, user.UserId);
-                for(int i = 0; i < applications.Count; i++)
+                using (NAAContext context = new NAAContext())
                 {
-                    applicationDAO.DeleteApplication(context, applications[i]);
+                    User u = userDAO.GetUser(context, user.UserId);
+
+                    //remove all applications of user
+                    IList<Application> applications = userDAO.GetApplicationCollection(context, u.UserId);
+                    for (int i = 0; i < applications.Count; i++)
+                    {
+                        applicationDAO.DeleteApplication(context, applications[i]);
+                    }
+
+                    //remove all links to university
+                    IList<University> universities = userDAO.GetUniversitiesCollection(context, u.UserId);
+                    for (int i = 0; i < applications.Count; i++)
+                    {
+                        userDAO.RemoveUniversityFromCollection(universities[i], u, context);
+                    }
+
+                    //remove user
+                    userDAO.DeleteUser(context, u);
+
+                    context.SaveChanges();
                 }
+            } catch
+            {
 
-                //remove all links to university
-                IList<University> universities = userDAO.GetUniversitiesCollection(context, user.UserId);
-                for(int i = 0; i < applications.Count; i++)
-                {
-                    userDAO.RemoveUniversityFromCollection(universities[i], user, context);
-                }
-
-                //remove user
-                userDAO.DeleteUser(context, user);
-
-                context.SaveChanges();
             }
         }
 

@@ -49,10 +49,8 @@ namespace NAAProject.Data.Models.DAO
         }
         public void AddToCollection(Application application, string userId, NAAContext context)
         {
-            Application app = context.Applications.Find(application.ApplicationId);
 
-
-            context.Users.Find(userId).Applications.Add(app);
+            context.Users.Find(userId).Applications.Add(application);
         }
 
         public void AddUser(NAAContext context, User user)
