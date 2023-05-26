@@ -133,12 +133,13 @@ namespace NAAProject.Controllers
         [HttpPost]
         [Authorize(Roles = "User")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int applicationId, IFormCollection collection)
         {
             try
             {
-                Application application = applicationService.GetApplication(id);
-                applicationService.DeleteApplication(id);
+                //int userId = collection.
+                Application application = applicationService.GetApplication(applicationId);
+                applicationService.DeleteApplication(applicationId);
                 return RedirectToAction("GetApplications", "Application", application.ApplicationId);
             }
             catch

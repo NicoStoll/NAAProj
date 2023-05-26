@@ -13,7 +13,7 @@
 @foreach (var item in Model) {
         <tr>
            <td>
-               @Html.ActionLink(item.Offer, "GetApplication", new {id = item.ApplicationId})
+               @Html.ActionLink(item.Course, "GetApplication", new {id = item.ApplicationId})
            </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.ApplicationId">Details</a>
