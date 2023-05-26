@@ -19,22 +19,6 @@ namespace NAAProject.Controllers
             _signInManager = signInManager;
         }
 
-
-        [Authorize(Roles = "User")]
-        public ActionResult GetUsers() {
-            //use later on for sessions
-            string userId = HttpContext.Session.GetString("userId");
-           
-
-            return View(context.Users.ToList());
-        }
-
-        [Authorize(Roles = "User")]
-        public ActionResult GetRoles()
-        {
-            return View(context.Roles.ToList());
-        }
-
         [Authorize(Roles = "User")]
         public ActionResult AddRole()
         {
@@ -51,7 +35,7 @@ namespace NAAProject.Controllers
             role.NormalizedName = collection["RoleName"].ToString().ToUpper();
             context.Roles.Add(role);
             context.SaveChanges();
-            return RedirectToAction("GetRoles");
+            return RedirectToAction("Admin", "Home");
         }
 
 
@@ -91,7 +75,7 @@ namespace NAAProject.Controllers
             IdentityUser user = _signInManager.UserManager.FindByEmailAsync(username).Result;
             await _signInManager.UserManager.AddToRoleAsync(user, rolename);
             FillInDropDowns();
-            return RedirectToAction("AddUserToRole");
+            return RedirectToAction("AddUserToRole", "Admin");
         }
 
         void FillInDropDowns() {

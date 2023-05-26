@@ -5,11 +5,35 @@
 
 <h1>Admin</h1>
 
-@Html.ActionLink("Users", "GetUsers", "Admin")
-<br />
-@Html.ActionLink("Roles", "GetRoles", "Admin")
-<br />
-@Html.ActionLink("Universities", "GetUniversities", "University")
-<br />
-@Html.ActionLink("UserProfile", "Details", "User")
+<hr />
+
+<h2>Users</h2>
+
+@foreach (var user in Model.Users)
+{
+    <p>
+        @user.UserName |
+        @Html.ActionLink("Edit", "EditUser", new {id = user.Id}) |
+        @Html.ActionLink("Delete", "DeleteUser", new {id = user.Id})
+    </p>
+}
+
+@Html.ActionLink("Show User Roles", "GetRolesForUser", "Admin") 
+
+<hr />
+
+<h2>Roles</h2>
+
+@foreach (var role in Model.Roles)
+{
+    <p>
+        @role.Name |
+        @Html.ActionLink("Edit", "EditRole", new { id = role.Id}) |
+        @Html.ActionLink("Delete", "DeleteRole", new { id = role.Id})
+    </p>
+}
+
+@Html.ActionLink("Add Role", "AddRole", "Admin") | @Html.ActionLink("Add User To Role", "AddUserToRole", "Admin")
+
+<hr />
 
