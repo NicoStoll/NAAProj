@@ -17,7 +17,14 @@ namespace NAAProject.Data.Models.IDAO
         public IList<User> GetUsers(NAAContext context);
 
         public void RemoveFromCollection(Application application, User user, NAAContext context);
+
+        public void RemoveUniversityFromCollection(University university, User user, NAAContext context);
         public void AddToCollection(Application application, string userId, NAAContext context);
         public void UpdateUser(NAAContext context, User user);
+        public IList<Application> GetApplicationCollection(NAAContext context, string userId);
+
+        public IList<University> GetUniversitiesCollection(NAAContext context, string userId);
+
+        void DeleteUser(NAAContext context, User user);
     }
 }

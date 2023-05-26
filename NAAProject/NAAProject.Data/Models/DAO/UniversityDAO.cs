@@ -40,5 +40,6 @@ namespace NAAProject.Data.Models.DAO
             context.Entry(a).CurrentValues.SetValues(university);
             context.SaveChanges();
         }
+
     }
 }

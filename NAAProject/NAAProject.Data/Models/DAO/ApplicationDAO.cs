@@ -24,6 +24,7 @@ namespace NAAProject.Data.Models.DAO
             context.Applications.ToList();
             return context.Applications.Find(id);
         }
+
         public void AddApplication(NAAContext context, Application application)
         {
             //Maximal 5 pro User erlauben

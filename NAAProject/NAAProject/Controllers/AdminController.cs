@@ -60,7 +60,7 @@ namespace NAAProject.Controllers
 
         }
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "User")]
         public ActionResult AddUserToRole()
         {
             FillInDropDowns();
